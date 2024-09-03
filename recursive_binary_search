@@ -1,0 +1,28 @@
+def recursive_binary_search(lst, target):
+    if len(lst) == 0:
+        return False
+    else:
+        midpoint = len(lst) // 2
+        if lst[midpoint] == target:
+            return True
+        else:
+            if lst[midpoint] < target:
+                return recursive_binary_search(lst[midpoint + 1:], target)
+            else:
+                return recursive_binary_search(lst[:midpoint], target)
+
+def verify(result):
+    if result:
+        print("Target found")
+    else:
+        print("Target not found")
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+# Test with a target not in the list
+result = recursive_binary_search(numbers, 12)
+verify(result)
+
+# Test with a target in the list
+result = recursive_binary_search(numbers, 6)
+verify(result)
